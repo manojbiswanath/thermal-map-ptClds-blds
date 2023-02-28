@@ -1,7 +1,7 @@
 # Mapping thermal textures from point clouds to buildings
 
 The implementation of the methodology and the access datasets are mentioned below:
-* A refined CityGML LoD3 model is used. The modelling is done in [SketchUP](https://www.sketchup.com/) using plugin [CityEditor](https://www.3dis.de/cityeditor/).
+* A refined CityGML LoD3 model is used. The modelling are done in [SketchUP](https://www.sketchup.com/) using plugin [CityEditor](https://www.3dis.de/cityeditor/).
 * The CityGML LoD2 models are available from [LDBV Bavaria](https://geodaten.bayern.de/opengeodata/).
 * Data integration, transformation and visualization is done in [FME](https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_Desktop/Welcome_to_FME_Workbench.htm)
 * Programming and computation is performed using [MATLAB](https://mathworks.com/products/matlab.html)
