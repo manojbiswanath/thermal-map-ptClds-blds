@@ -11,6 +11,7 @@ The implementation of the methodology and the access datasets are mentioned belo
 * MATLAB is used for:
    - Thermal mapping algorithm
    - Post-processing the generated texture image: Brighten and apply heat map to the image and then blended with the mask.
+* Special acknowledgements to [Jingwei Zhu](https://www.sciencedirect.com/science/article/abs/pii/S1350449520306708) for providing the thermal point clouds.
 
 
 
