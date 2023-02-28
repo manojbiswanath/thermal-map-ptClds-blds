@@ -1,0 +1,748 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME\fme.exe" H:\fme\pointcloud_sampling.fmw
+#          --SourceDataset_PCD "$(FME_MF_DIR_USERTYPED)filtered_simplified\New folder\SubTCA_simplified2.pcd"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="3162.15 163.628"
+#!   DOC_TOP_LEFT="1048.01 -1054.26"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22630"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="f838cde7-82be-4eed-a208-aaafd6f5be77"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+#!   LAST_SAVE_DATE="2023-02-28T18:28:51"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="0 0"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="PCD"
+#!   DATASET="$(SourceDataset_PCD)"
+#!   KEYWORD="PCD_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="false"
+#!   EXPOSABLE_ATTRS="fme_basename string fme_color string fme_dataset string fme_feature_type string fme_fill_color string fme_geometry string fme_primary_axis float64 fme_rotation float64 fme_secondary_axis float64 fme_start_angle float64 fme_sweep_angle float64 fme_text_size float64 fme_text_string string fme_type string multi_reader_full_id int32 multi_reader_id int32 multi_reader_keyword string multi_reader_type string pcd_file_format string pcd_source_datatype string pcd_type string pcd_version string"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILEDIR"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="21816"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="AUTO_FANOUT_ATTRIBUTE"
+#!   VALUE="fme_basename"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="pcd file"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="File1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Point Cloud File"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_AUTO_EXPOSE"
+#!   VALUE="fme_basename string"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the Point Cloud Data (PCD) file(s)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a folder for the Point Cloud Data (PCD) file"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float64"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float32"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int32"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint32"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint16"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int8"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint8"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int64"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint64"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="decimal"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="logical"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="PCD"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="PCD"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="pcd_point_cloud"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="pcd_point_cloud"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="PCD"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="PCD"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="PCD"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="pcd_point_cloud"
+#!   POSITION="1048.0079996358195 -973.88657273608544"
+#!   BOUNDING_RECT="1048.0079996358195 -973.88657273608544 454 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="PCD_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fme_basename" ATTR_TYPE="string"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="PCD_1"
+#!   OVERRIDE="-PCD_1_DATASET"
+#!   DATASET="PCD_1/SubTCA_simplified2.pcd"
+#! />
+#! </READER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_PCD PCD_Files(*.pcd)|*.pcd|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files|* Point Cloud Data File(s):"
+#!   DEFAULT_VALUE="$(FME_MF_DIR)filtered_simplified\New folder\SubTCA_simplified2.pcd"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImRlZmF1bHRWYWx1ZSI6IiQoRk1FX01GX0RJUilmaWx0ZXJlZF9zaW1wbGlmaWVkXFxOZXcgZm9sZGVyXFxTdWJUQ0Ffc2ltcGxpZmllZDIucGNkIiwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwiZmlsdGVycyI6W3siZGVzY3JpcHRpb24iOiJQQ0QgRmlsZXMiLCJmaWx0ZXIiOlsiKi5wY2QiXX0seyJkZXNjcmlwdGlvbiI6IkNvbXByZXNzZWQgRmlsZXMiLCJmaWx0ZXIiOlsiKi5iejIiLCIqLmd6Il19LHsiZGVzY3JpcHRpb24iOiJBcmNoaXZlIEZpbGVzIiwiZmlsdGVyIjpbIiouN3oiLCIqLjd6aXAiLCIqLnJhciIsIioucnZ6IiwiKi50YXIiLCIqLnRhci5iejIiLCIqLnRhci5neiIsIioudGd6IiwiKi56aXAiLCIqLnppcHgiXX0seyJkZXNjcmlwdGlvbiI6IkFsbCBGaWxlcyIsImZpbHRlciI6WyIqIl19XSwiaW5jbHVkZVdlYkJyb3dzZXIiOnRydWUsIml0ZW1zVG9TZWxlY3QiOiJmaWxlcyIsIm5hbWUiOiJTb3VyY2VEYXRhc2V0X1BDRCIsInByb21wdCI6IlBvaW50IENsb3VkIERhdGEgRmlsZShzKToiLCJyZXF1aXJlZCI6dHJ1ZSwic2VsZWN0TXVsdGlwbGUiOnRydWUsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_PCD" 
+#!   DEFAULT_VALUE="$(FME_MF_DIR)filtered_simplified\New folder\SubTCA_simplified2.pcd"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_PCD PCD_Files(*.pcd)|*.pcd|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files|* Point Cloud Data File(s):"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="PointCloudFilter"
+#!   VERSION="2"
+#!   POSITION="2044.8982093165664 -923.88456746750103"
+#!   BOUNDING_RECT="2044.8982093165664 -923.88456746750103 454 71"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="21816"
+#! >
+#!     <OUTPUT_FEAT NAME="filtered"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;UNFILTERED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="FILTER_TABLE" PARM_VALUE="&lt;at&gt;Component&lt;openparen&gt;x&lt;closeparen&gt;&lt;space&gt;&lt;gt&gt;&lt;space&gt;691033.98&lt;space&gt;&lt;amp&gt;&lt;amp&gt;&lt;space&gt;&lt;at&gt;Component&lt;openparen&gt;x&lt;closeparen&gt;&lt;space&gt;&lt;lt&gt;&lt;space&gt;691082.67&lt;space&gt;&lt;amp&gt;&lt;amp&gt;&lt;space&gt;&lt;at&gt;Component&lt;openparen&gt;y&lt;closeparen&gt;&lt;space&gt;&lt;gt&gt;&lt;space&gt;5336051.44&lt;space&gt;&lt;amp&gt;&lt;amp&gt;&lt;space&gt;&lt;at&gt;Component&lt;openparen&gt;y&lt;closeparen&gt;&lt;space&gt;&lt;lt&gt;&lt;space&gt;5336086.56 filtered"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_UNFILTERED_POINTS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PointCloudFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="Inspector"
+#!   VERSION="5"
+#!   POSITION="3756.1537810936334 -983.26166648702292"
+#!   BOUNDING_RECT="3756.1537810936334 -983.26166648702292 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <XFORM_PARM PARM_NAME="AREA_COLOR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="PEN_COLOR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POINTCLOUD_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RASTER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RASTER_NUM_COLS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RASTER_NUM_ROWS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RASTER_START_COL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RASTER_START_ROW" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RASTER_VISUALIZATION_OPTION" PARM_VALUE="No Reduction"/>
+#!     <XFORM_PARM PARM_NAME="TACKATTRS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="THINNER_INTERVAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="THINNER_MAX_NUM_POINTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="THINNER_TYPE_DISPLAY" PARM_VALUE="No Thinning"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VECTOR_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PCD"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="PointCloudSimplifier"
+#!   VERSION="0"
+#!   POSITION="2918.7791877918771 -890.63390633906329"
+#!   BOUNDING_RECT="2918.7791877918771 -890.63390633906329 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="SIMPLIFIED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="REMOVED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MASB_BISECT_K" PARM_VALUE="2"/>
+#!     <XFORM_PARM PARM_NAME="MASB_BISECT_T" PARM_VALUE="1.0"/>
+#!     <XFORM_PARM PARM_NAME="MASB_CELLSIZE" PARM_VALUE="Auto"/>
+#!     <XFORM_PARM PARM_NAME="MASB_D_PLANAR_T" PARM_VALUE="32.0"/>
+#!     <XFORM_PARM PARM_NAME="MASB_D_PRESERVE_T" PARM_VALUE="20.0"/>
+#!     <XFORM_PARM PARM_NAME="MASB_EPSILON" PARM_VALUE="0.4"/>
+#!     <XFORM_PARM PARM_NAME="MASB_INTERIOR" PARM_VALUE="Use Interior and Exterior MAT"/>
+#!     <XFORM_PARM PARM_NAME="MASB_IR" PARM_VALUE="Auto"/>
+#!     <XFORM_PARM PARM_NAME="MASB_K" PARM_VALUE="10"/>
+#!     <XFORM_PARM PARM_NAME="MASB_MAX_DENSITY" PARM_VALUE="None"/>
+#!     <XFORM_PARM PARM_NAME="MASB_MIN_DENSITY" PARM_VALUE="None"/>
+#!     <XFORM_PARM PARM_NAME="MASB_PARAMETERS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="MASB_SQUARED" PARM_VALUE="Linear"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SIMPLIFIER_TYPE_DISPLAY" PARM_VALUE="Medial Axis Transform"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TUNING_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PointCloudSimplifier"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 filtered"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 SIMPLIFIED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_PCD_1,PCD_IN_USE_SEARCH_ENVELOPE_PCD_1,PCD_IN_SEARCH_ENVELOPE_MINX_PCD_1,PCD_IN_SEARCH_ENVELOPE_MINY_PCD_1,PCD_IN_SEARCH_ENVELOPE_MAXX_PCD_1,PCD_IN_SEARCH_ENVELOPE_MAXY_PCD_1,PCD_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_PCD_1,PCD_IN_CLIP_TO_ENVELOPE_PCD_1,PCD_IN_NETWORK_AUTHENTICATION_PCD_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_PCD $(FME_MF_DIR)filtered_simplified\New folder\SubTCA_simplified2.pcd
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_PCD$encode)} == {}} { puts_real {Parameter 'SourceDataset_PCD' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} PCD
+MULTI_READER_KEYWORD{0} PCD_1
+MULTI_READER_GEN_DIRECTIVES{0} SEARCH_ENVELOPE_COORDINATE_SYSTEM,,USE_SEARCH_ENVELOPE,NO,SEARCH_ENVELOPE_MINX,0,SEARCH_ENVELOPE_MAXX,0,CLIP_TO_ENVELOPE,NO,SEARCH_ENVELOPE_MINY,0,PCD_EXPOSE_FORMAT_ATTRS,,EXPOSE_ATTRS_GROUP,,_MERGE_SCHEMAS,YES,SEARCH_ENVELOPE_MAXY,0,READER_META_ATTRIBUTES,fme_dataset<space>fme_basename,GROUP_BY_DATASET,No
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "PCD_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PCD PCD_1
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_PCD_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PCD PCD_1
+DEFAULT_MACRO SourceDataset_PCD_1 $(SourceDataset_PCD)
+GUI MULTIFILE SourceDataset_PCD_1 PCD_Files(*.pcd)|*.pcd|All_Files|* Point Cloud Data File(s):
+# =====================================================================
+# Provide some control over what attributes have the user-selected
+# encoding applied. Normally all attributes are updated after being
+# read, but the following lines exclude from this treatment all
+# attributes whose names start with fme_ or csv_.
+PCD_1_UNENCODED_ATTR_PREFIX fme_ pcd_
+DEFAULT_MACRO PCD_IN_READER_META_ATTRIBUTES_PCD_1 fme_dataset fme_basename
+PCD_1_READER_META_ATTRIBUTES "$(PCD_IN_READER_META_ATTRIBUTES_PCD_1)"
+DEFAULT_MACRO PCD_IN_GROUP_BY_DATASET_PCD_1 No
+PCD_1_GROUP_BY_DATASET "$(PCD_IN_GROUP_BY_DATASET_PCD_1)"
+# Include this file in source setting section to add external search envelope processing
+# Zero as a default means we don't do any search -- this makes workbench happier
+DEFAULT_MACRO PCD_IN_USE_SEARCH_ENVELOPE_PCD_1 NO
+PCD_1_USE_SEARCH_ENVELOPE "$(PCD_IN_USE_SEARCH_ENVELOPE_PCD_1)"
+GUI ACTIVEDISCLOSUREGROUP PCD_IN_USE_SEARCH_ENVELOPE_PCD_1 PCD_IN_SEARCH_ENVELOPE_MINX_PCD_1%PCD_IN_SEARCH_ENVELOPE_MINY_PCD_1%PCD_IN_SEARCH_ENVELOPE_MAXX_PCD_1%PCD_IN_SEARCH_ENVELOPE_MAXY_PCD_1%PCD_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_PCD_1%PCD_IN_CLIP_TO_ENVELOPE_PCD_1%PCD_IN_SEARCH_METHOD%PCD_IN_SEARCH_METHOD_FILTER%PCD_IN_SEARCH_ORDER%PCD_IN_SEARCH_FEATURE%PCD_IN_DUMMY_SEARCH_ENVELOPE_PARAMETER Use Search Envelope
+# ===========================================================================
+GUI LOOKUP PCD_IN_SEARCH_ENVELOPE_MINX_PCD_1 <Unused>,0 
+DEFAULT_MACRO PCD_IN_SEARCH_ENVELOPE_MINX_PCD_1 0
+PCD_1_SEARCH_ENVELOPE "$(PCD_IN_SEARCH_ENVELOPE_MINX_PCD_1)"
+GUI OPTIONAL FLOAT PCD_IN_SEARCH_ENVELOPE_MINX_PCD_1 Minimum X:
+# ===========================================================================
+GUI LOOKUP PCD_IN_SEARCH_ENVELOPE_MINY_PCD_1 <Unused>,0 
+DEFAULT_MACRO PCD_IN_SEARCH_ENVELOPE_MINY_PCD_1 0
+PCD_1_SEARCH_ENVELOPE "$(PCD_IN_SEARCH_ENVELOPE_MINY_PCD_1)"
+GUI OPTIONAL FLOAT PCD_IN_SEARCH_ENVELOPE_MINY_PCD_1 Minimum Y:
+# ===========================================================================
+GUI LOOKUP PCD_IN_SEARCH_ENVELOPE_MAXX_PCD_1 <Unused>,0 
+DEFAULT_MACRO PCD_IN_SEARCH_ENVELOPE_MAXX_PCD_1 0
+PCD_1_SEARCH_ENVELOPE "$(PCD_IN_SEARCH_ENVELOPE_MAXX_PCD_1)"
+GUI OPTIONAL FLOAT PCD_IN_SEARCH_ENVELOPE_MAXX_PCD_1 Maximum X:
+# ===========================================================================
+GUI LOOKUP PCD_IN_SEARCH_ENVELOPE_MAXY_PCD_1 <Unused>,0 
+DEFAULT_MACRO PCD_IN_SEARCH_ENVELOPE_MAXY_PCD_1 0
+PCD_1_SEARCH_ENVELOPE "$(PCD_IN_SEARCH_ENVELOPE_MAXY_PCD_1)"
+GUI OPTIONAL FLOAT PCD_IN_SEARCH_ENVELOPE_MAXY_PCD_1 Maximum Y:
+# ===========================================================================
+GUI LOOKUP PCD_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_PCD_1 <Unused>, 
+DEFAULT_MACRO PCD_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_PCD_1 
+PCD_1_SEARCH_ENVELOPE "$(PCD_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_PCD_1)"
+GUI OPTIONAL COORDSYS PCD_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_PCD_1 Search Envelope Coordinate System:
+# ===========================================================================
+# BUG18999: We now have a soft clip to fall back on like native spatial index
+# thus we are reintroducing the clip to envelop as an option for users.
+# Defualt to soft clip as per the existing database readers we are emulating
+GUI LOOKUP PCD_IN_CLIP_TO_ENVELOPE_PCD_1 <Unused>,NO 
+DEFAULT_MACRO PCD_IN_CLIP_TO_ENVELOPE_PCD_1 NO
+PCD_1_CLIP_TO_ENVELOPE "$(PCD_IN_CLIP_TO_ENVELOPE_PCD_1)"
+GUI OPTIONAL CHECKBOX PCD_IN_CLIP_TO_ENVELOPE_PCD_1 YES%NO Clip to Search Envelope
+DEFAULT_MACRO PCD_IN_EXPOSE_ATTRS_GROUP_PCD_1 
+PCD_1_EXPOSE_ATTRS_GROUP "$(PCD_IN_EXPOSE_ATTRS_GROUP_PCD_1)"
+# ===========================================================================
+DEFAULT_MACRO PCD_IN_NETWORK_AUTHENTICATION_PCD_1 
+PCD_1_NETWORK_AUTHENTICATION "$(PCD_IN_NETWORK_AUTHENTICATION_PCD_1)"
+GUI OPTIONAL AUTHENTICATOR PCD_IN_NETWORK_AUTHENTICATION_PCD_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO PCD_IN_ATTRIBUTE_READING_PCD_1 ALL
+PCD_1_ATTRIBUTE_READING "$(PCD_IN_ATTRIBUTE_READING_PCD_1)"
+# ============================================================================
+PCD_1_GENERATE_FME_BUILD_NUM 21816
+PCD_1_DATASET "$(SourceDataset_PCD_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)pointcloud_sampling.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_PCD_1 PCD_1
+# -------------------------------------------------------------------------
+
+PCD_1_READER_META_ATTRIBUTES fme_basename fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME pointcloud_sampling
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+INCLUDE [ if {[info exists env(FME_TEMP)] && [file isdirectory $env(FME_TEMP)]} {set gVisualizerTemp $env(FME_TEMP)}  elseif {[info exists env(TEMP)] && [file isdirectory $env(TEMP)]}  {set gVisualizerTemp $env(TEMP)}  elseif { $tcl_platform(platform) == "unix" } {set gVisualizerTemp "/tmp"} else {set gVisualizerTemp c:};  regsub -all {[ ,&]} {$(WORKSPACE_NAME)} {_} wsname; set gVisualizerTemp $gVisualizerTemp/${wsname}_[clock format [clock seconds] -format %H%M%S];  puts "MACRO WORKSPACE_TEMP_DIR $gVisualizerTemp"; 
+MACRO VISUALIZER_FEATURE_FILE $(WORKSPACE_TEMP_DIR)/inspector.ffs
+MACRO VISUALIZER_SCHEMA_FILE $(WORKSPACE_TEMP_DIR)/inspector.fsc
+MACRO VISUALIZER_CREATE_SPATIAL_INDEX YES
+# -------------------------------------------------------------------------
+PCD_1_DEF PCD
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_PCD_1)   INPUT FEATURE_TYPE *    ROUTE PCD PCD_1::PCD multi_reader_keyword,$(DATASET_KEYWORD_PCD_1) TO FME_GENERIC ::PCD ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+PCD_1_MERGE_DEF PCD_1::PCD EXACT PCD
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "PCD_PCD_1 Splitter"    INPUT FEATURE_TYPE PCD    OUTPUT FEATURE_TYPE PCD_PCD_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} PointCloudEvaluationFactory    FACTORY_NAME { PointCloudFilter }    INPUT  FEATURE_TYPE PCD_PCD_1    MODE FILTER    REJECT_INVALID_FEATURES YES    FORCE_FLOAT_DIVISION yes    EXPRESSION_LIST <at>Component<openparen>x<closeparen><space><gt><space>691033.98<space><amp><amp><space><at>Component<openparen>x<closeparen><space><lt><space>691082.67<space><amp><amp><space><at>Component<openparen>y<closeparen><space><gt><space>5336051.44<space><amp><amp><space><at>Component<openparen>y<closeparen><space><lt><space>5336086.56 FILTER_ATTRIBUTE __pc_internal_filter_attribute__ FILTER_ATTRIBUTE_VALUES_LIST { filtered }    OUTPUT_UNFILTERED_POINTS { "Yes" }    OUTPUT { RESULT FEATURE_TYPE PointCloudFilter_POINTCLOUDFILTERINPUTLINE_0 }    OUTPUT { <REJECTED> FEATURE_TYPE PointCloudFilter_<REJECTED>        }
+FACTORY_DEF {*} TestFactory FACTORY_NAME PointCloudFilter_TestFactory_0 INPUT FEATURE_TYPE PointCloudFilter_POINTCLOUDFILTERINPUTLINE_0 STRING_TEST { @Value(__pc_internal_filter_attribute__) = filtered } OUTPUT PASSED FEATURE_TYPE PointCloudFilter_filtered    @RemoveAttributes(__pc_internal_filter_attribute__) OUTPUT FAILED FEATURE_TYPE PointCloudFilter_POINTCLOUDFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME PointCloudFilter_UNFILTERED INPUT FEATURE_TYPE PointCloudFilter_POINTCLOUDFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE PointCloudFilter_<UNFILTERED>    @RemoveAttributes(__pc_internal_filter_attribute__)
+FACTORY_DEF * TeeFactory   FACTORY_NAME "PointCloudFilter <UNFILTERED> Transformer Output Nuker"   INPUT FEATURE_TYPE PointCloudFilter_<UNFILTERED>
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME PointCloudFilter_<Rejected> INPUT FEATURE_TYPE PointCloudFilter_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, PointCloudFilter<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} PointCloudManipulatorFactory    FACTORY_NAME { PointCloudSimplifier }    INPUT  FEATURE_TYPE PointCloudFilter_filtered    MODE MASB_SIMPLIFY    MASB_SIMPLIFY_K { "10" }    MASB_SIMPLIFY_IR { "AUTO" }    MASB_SIMPLIFY_D_PRESERVE_T { "20.0" }    MASB_SIMPLIFY_D_PLANAR_T { "32.0" }    MASB_SIMPLIFY_EPSILON { "0.4" }    MASB_SIMPLIFY_CELLSIZE { "AUTO" }    MASB_SIMPLIFY_BISECT_K { "2" }    MASB_SIMPLIFY_BISECT_T { "1.0" }    MASB_SIMPLIFY_MIN_DENSITY { "0" }    MASB_SIMPLIFY_MAX_DENSITY { "0" }    MASB_SIMPLIFY_INTERIOR { "NO" }    MASB_SIMPLIFY_SQUARED { "NO" }    OUTPUT { SIMPLIFIED FEATURE_TYPE PointCloudSimplifier_SIMPLIFIED          }    OUTPUT { REJECTED FEATURE_TYPE PointCloudSimplifier_<REJECTED>          }
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME PointCloudSimplifier_<Rejected> INPUT FEATURE_TYPE PointCloudSimplifier_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, PointCloudSimplifier<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+# Assumption is that the workspace temp dir has been already set and created.  See controldefs.cpp - ControlDefs::writeVisualizerTempDir
+DEFAULT_MACRO WORKSPACE_TEMP_DIR
+INCLUDE [    set safeName "[regsub -all {[^a-zA-Z0-9]} {PCD} _]_[expr round(rand() * 1000000)]_[clock clicks  -milliseconds]";    puts "MACRO SAFE_FFS_NAME $safeName"; ]
+FACTORY_DEF {*} InspectorFactory    FACTORY_NAME { PCD_Prepper }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE PointCloudSimplifier_SIMPLIFIED    GROUP_ATTRIBUTE __inspector_feature_type_attr__    GROUP_ATTRIBUTE_PREFIX { PCD }    RASTER_REDUCTION { NoReduction }    POINT_CLOUD_REDUCTION { NO_THINNING }    OUTPUT { RESULT FEATURE_TYPE __viewme__    }
+# Now route all the features into the recorder, changing their
+# feature type to the transformer name so that they view nicely
+DEFAULT_MACRO VISUALIZER_FEATURE_FILE $(WORKSPACE_TEMP_DIR)/$(SAFE_FFS_NAME).ffs
+DEFAULT_MACRO VISUALIZER_CREATE_SPATIAL_INDEX NO
+# [PR#45549] The Data Inspector will limit the maximum number of features
+# it reads on WIN32, so we will correspondingly limit the number of
+# features we record here using the MAX_FEATURES_TO_RECORD directive.
+FACTORY_DEF {*} RecorderFactory    FACTORY_NAME { PCD_Recorder }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT FEATURE_TYPE __viewme__       _wb_termination_feature Yes       @FeatureType(TERMINATOR_@Value(_wb_termination_xformer))    INPUT FEATURE_TYPE __viewme__       @FeatureType(@Value(__inspector_feature_type_attr__))       @RemoveAttributes(__inspector_feature_type_attr__)    FEATURE_FILE { "$(VISUALIZER_FEATURE_FILE)" }    STORE_SCANNED_SCHEMA YES    NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES    CREATE_SPATIAL_INDEX { "$(VISUALIZER_CREATE_SPATIAL_INDEX)" }    INSPECTOR { "$(VISUALIZER_CREATE_SPATIAL_INDEX)" }    FSC_SCHEMA { fme_basename,varchar<openparen>20<closeparen> }    MODE RECORD    STORE_SCANNED_METADATA    RECORD_DIRECTLY_TO_DISK YES    MAX_FEATURES_TO_RECORD WIN32 2000000
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
+# -------------------------------------------------------------------------
+
+DEFAULT_MACRO FME_LAUNCH_VIEWER_APP NO
+FACTORY_DEF * CreationFactory    FACTORY_NAME VisualizerProcessor   CREATE_AT_END   OUTPUT FEATURE_TYPE __NUKEME__   @TCL("if {{$(FME_LAUNCH_VIEWER_APP)} == {YES}} {  if [file exists {$(WORKSPACE_TEMP_DIR)}] {set files [glob -nocomplain -directory  {$(WORKSPACE_TEMP_DIR)} -tails *.ffs];   if {[llength $files] == 1} {    set theFile {$(WORKSPACE_TEMP_DIR)/};   append theFile [lindex $files 0];   eval FME_Execute System \173\042$(FME_HOME_UNIX)/fmedatainspector\042 --visualizer --single-application --delete-on-close --no-source-prompt -f FFS \042$theFile\042 & \175;  } elseif { [llength $files] == 0 } {  catch { file delete -force {$(WORKSPACE_TEMP_DIR)} };  } else {  set filesNoExt {}; set lastfile {}; foreach {fileName} [lsort $files] { set fileNoExt [string trimright $fileName {.ffs}]; if [regexp {(.*)_[0-9]*$} $fileNoExt wholething fileNoExtBase] {  if { $fileNoExtBase == $lastfile } { continue } }; set lastfile $fileNoExt; lappend filesNoExt $fileNoExt };  eval FME_Execute System \173\042$(FME_HOME_UNIX)/fmedatainspector\042 --visualizer --single-application --delete-on-close --no-source-prompt -d {$(WORKSPACE_TEMP_DIR)} -a ffs -f FFS $filesNoExt & \175; }; }; }; ")
+FACTORY_DEF * TeeFactory    FACTORY_NAME VisualizerCleaner   INPUT FEATURE_TYPE __NUKEME__
