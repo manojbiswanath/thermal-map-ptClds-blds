@@ -6,3 +6,4 @@ The implementation of the methodology and the access datasets are mentioned belo
 * Data integration, transformation and visualization is done in [FME](https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_Desktop/Welcome_to_FME_Workbench.htm)
 * Programming and computation is performed using [MATLAB](https://mathworks.com/products/matlab.html)
 * Mobile laserscanner pointcloud [datasets](https://www.iosb.fraunhofer.de/en/competences/image-exploitation/object-recognition/3d-data/datasets/tum-mls-2016.html) are recorded by Fraunhofer IOSB in 2016.
+* Data pre-processing is performed in FME. Building models and point clouds are accurately georeferenced and reprojected to standard coordinate systems, wherever necessary. Heavy point clouds are sampled to reduce the size.
